@@ -3,7 +3,7 @@
 namespace Tests\Queryr\Serialization\DataModel;
 
 use DataValues\StringValue;
-use Queryr\Serialization\DataModel\SimpleItemSerializer;
+use Queryr\Serialization\SimpleItemSerializer;
 use Wikibase\DataModel\Claim\Statement;
 use Wikibase\DataModel\Entity\Item;
 use Wikibase\DataModel\SiteLink;
@@ -101,10 +101,6 @@ class SimpleItemSerializerTest extends \PHPUnit_Framework_TestCase {
 					'value' => 'kittens',
 					'type' => 'string'
 				],
-
-				'P23' => [
-					'type' => 'novalue'
-				],
 			]
 		];
 
@@ -132,10 +128,6 @@ class SimpleItemSerializerTest extends \PHPUnit_Framework_TestCase {
 					'value' => 'kittens',
 					'type' => 'string'
 				],
-
-				'P23' => [
-					'type' => 'novalue'
-				],
 			]
 		];
 
@@ -161,10 +153,6 @@ class SimpleItemSerializerTest extends \PHPUnit_Framework_TestCase {
 				'P42' => [
 					'value' => 'kittens',
 					'type' => 'string'
-				],
-
-				'P23' => [
-					'type' => 'novalue'
 				],
 			]
 		];
