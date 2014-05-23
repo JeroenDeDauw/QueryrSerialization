@@ -3,7 +3,7 @@
 	"require": {
 		"php": ">=5.5.0",
 
-		"wikibase/data-model": "dev-claimlist",
+		"wikibase/data-model": "dev-master",
 		"serialization/serialization": "~3.2"
 	},
 	"require-dev": {

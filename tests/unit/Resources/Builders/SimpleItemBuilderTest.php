@@ -40,14 +40,14 @@ class SimpleItemBuilderTest extends \PHPUnit_Framework_TestCase {
 	private function newFingerprint() {
 		$fingerprint = Fingerprint::newEmpty();
 
-		$fingerprint->setLabel( new Term( 'en', 'foo' ) );
-		$fingerprint->setLabel( new Term( 'de', 'bar' ) );
-		$fingerprint->setLabel( new Term( 'nl', 'baz' ) );
+		$fingerprint->setLabel( 'en', 'foo' );
+		$fingerprint->setLabel( 'de', 'bar' );
+		$fingerprint->setLabel( 'nl', 'baz' );
 
-		$fingerprint->setDescription( new Term( 'de', 'de description' ) );
+		$fingerprint->setDescription( 'de', 'de description' );
 
-		$fingerprint->setAliasGroup( new AliasGroup( 'en', [ 'first en alias', 'second en alias' ] ) );
-		$fingerprint->setAliasGroup( new AliasGroup( 'de', [ 'first de alias', 'second de alias' ] ) );
+		$fingerprint->setAliasGroup( 'en', [ 'first en alias', 'second en alias' ] );
+		$fingerprint->setAliasGroup( 'de', [ 'first de alias', 'second de alias' ] );
 
 		return $fingerprint;
 	}
