@@ -36,13 +36,11 @@ class SimpleStatementsBuilderTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testEntityIdValueGetsSimplified() {
-		$idValue = new EntityIdValue( new ItemId( 'Q1337' ) );
-
-		$statement = new Statement( new PropertyValueSnak( 42, $idValue ) );
+		$statement = new Statement( new PropertyValueSnak( 42, new EntityIdValue( new ItemId( 'Q1337' ) ) ) );
 		$statement->setGuid( 'first guid' );
 
 		$expected = SimpleStatement::newInstance()
-			->withProperty( 'P42' )->withType( 'wikibase-entityid' )->withValues( [ $idValue ] );
+			->withProperty( 'P42' )->withType( 'string' )->withValues( [ new StringValue( 'Q1337' ) ] );
 
 		$this->assertBuildsFrom( [ $statement ], [ $expected ] );
 	}

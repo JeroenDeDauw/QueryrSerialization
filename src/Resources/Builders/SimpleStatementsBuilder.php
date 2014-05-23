@@ -3,11 +3,13 @@
 namespace Queryr\Resources\Builders;
 
 use DataValues\DataValue;
+use DataValues\StringValue;
 use Queryr\Resources\SimpleStatement;
 use Traversable;
 use Wikibase\DataModel\Claim\ClaimList;
 use Wikibase\DataModel\Claim\Claims;
 use Wikibase\DataModel\Claim\Statement;
+use Wikibase\DataModel\Entity\EntityIdValue;
 use Wikibase\DataModel\Entity\Item;
 use Wikibase\DataModel\Entity\PropertyId;
 use Wikibase\DataModel\Snak\PropertyNoValueSnak;
@@ -77,7 +79,13 @@ class SimpleStatementsBuilder {
 	}
 
 	private function handle( PropertyValueSnak $snak ) {
-		return $snak->getDataValue();
+		$value = $snak->getDataValue();
+
+		if ( $value instanceof EntityIdValue ) {
+			return new StringValue( $value->getEntityId()->getSerialization() );
+		}
+
+		return $value;
 	}
 
 }
