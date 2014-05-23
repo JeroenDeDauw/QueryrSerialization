@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Queryr\Serialization\DataModel;
+namespace Tests\Queryr\Serialization;
 
 use DataValues\StringValue;
 use Queryr\Serialization\SimpleItemSerializer;
@@ -15,7 +15,7 @@ use Wikibase\DataModel\Term\Fingerprint;
 use Wikibase\DataModel\Term\Term;
 
 /**
- * @covers Queryr\Serialization\DataModel\SimpleItemSerializer
+ * @covers Queryr\Serialization\SimpleItemSerializer
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -95,59 +95,6 @@ class SimpleItemSerializerTest extends \PHPUnit_Framework_TestCase {
 			'label' => 'bar',
 			'description' => 'de description',
 			'aliases' => [ 'first de alias', 'second de alias' ],
-
-			'data' => [
-				'P42' => [
-					'value' => 'kittens',
-					'type' => 'string'
-				],
-			]
-		];
-
-		$this->assertEquals( $expected, $serialized );
-	}
-
-	public function testSerializationForEn() {
-		$serializer = new SimpleItemSerializer( 'en' );
-
-		$item = $this->newItem();
-
-		$serialized = $serializer->serialize( $item );
-
-		$expected = [
-			'id' => [
-				'wikidata' => 'Q1337',
-				'en.wikipedia' => 'En Page',
-			],
-
-			'label' => 'foo',
-			'aliases' => [ 'first en alias', 'second en alias' ],
-
-			'data' => [
-				'P42' => [
-					'value' => 'kittens',
-					'type' => 'string'
-				],
-			]
-		];
-
-		$this->assertEquals( $expected, $serialized );
-	}
-
-	public function testSerializationForNl() {
-		$serializer = new SimpleItemSerializer( 'nl' );
-
-		$item = $this->newItem();
-
-		$serialized = $serializer->serialize( $item );
-
-		$expected = [
-			'id' => [
-				'wikidata' => 'Q1337',
-				'en.wikipedia' => 'En Page',
-			],
-
-			'label' => 'baz',
 
 			'data' => [
 				'P42' => [

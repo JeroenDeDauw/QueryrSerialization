@@ -10,6 +10,25 @@ use DataValues\DataValue;
  */
 class SimpleStatement {
 
+	public static function newInstance() {
+		return new self();
+	}
+
+	public function withProperty( $propertyName ) {
+		$this->propertyName = $propertyName;
+		return $this;
+	}
+
+	public function withType( $type ) {
+		$this->valueType = $type;
+		return $this;
+	}
+
+	public function withValues( array $values ) {
+		$this->values = $values;
+		return $this;
+	}
+
 	/**
 	 * @var string
 	 */
