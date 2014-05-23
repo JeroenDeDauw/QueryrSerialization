@@ -10,6 +10,21 @@ use DataValues\DataValue;
  */
 class SimpleStatement {
 
+	/**
+	 * @var string
+	 */
+	public $propertyName;
+
+	/**
+	 * @var string
+	 */
+	public $valueType;
+
+	/**
+	 * @var DataValue[]
+	 */
+	public $values = [];
+
 	public static function newInstance() {
 		return new self();
 	}
@@ -28,20 +43,5 @@ class SimpleStatement {
 		$this->values = $values;
 		return $this;
 	}
-
-	/**
-	 * @var string
-	 */
-	public $propertyName;
-
-	/**
-	 * @var string
-	 */
-	public $valueType;
-
-	/**
-	 * @var DataValue[]
-	 */
-	public $values = [];
 
 }
