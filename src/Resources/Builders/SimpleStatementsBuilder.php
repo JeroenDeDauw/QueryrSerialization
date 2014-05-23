@@ -31,7 +31,7 @@ class SimpleStatementsBuilder {
 	 *
 	 * @return array
 	 */
-	public function serializeStatement( ClaimList $statements ) {
+	public function buildFromStatements( ClaimList $statements ) {
 		$simpleStatements = [];
 
 		foreach ( $statements->getPropertyIds() as $propertyId ) {

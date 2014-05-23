@@ -79,7 +79,7 @@ class SimpleItemBuilder {
 
 	private function addStatements() {
 		$statementsBuilder = new SimpleStatementsBuilder( $this->languageCode );
-		$this->simpleItem->statements = $statementsBuilder->serializeStatement( new ClaimList( $this->item->getClaims() ) );
+		$this->simpleItem->statements = $statementsBuilder->buildFromStatements( new ClaimList( $this->item->getClaims() ) );
 	}
 
 }

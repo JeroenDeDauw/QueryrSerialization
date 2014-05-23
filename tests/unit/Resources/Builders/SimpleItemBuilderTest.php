@@ -32,7 +32,7 @@ class SimpleItemBuilderTest extends \PHPUnit_Framework_TestCase {
 		$item->setFingerprint( $this->newFingerprint() );
 		$item->setSiteLinkList( $this->newSiteLinks() );
 
-		$this->addClaims( $item );
+		$this->addStatements( $item );
 
 		return $item;
 	}
@@ -61,16 +61,16 @@ class SimpleItemBuilderTest extends \PHPUnit_Framework_TestCase {
 		return $links;
 	}
 
-	private function addClaims( Item $item ) {
-		$claim = new Statement( new PropertyValueSnak( 42, new StringValue( 'kittens' ) ) );
-		$claim->setGuid( 'first guid' );
+	private function addStatements( Item $item ) {
+		$statement = new Statement( new PropertyValueSnak( 42, new StringValue( 'kittens' ) ) );
+		$statement->setGuid( 'first guid' );
 
-		$item->addClaim( $claim );
+		$item->addClaim( $statement );
 
-		$claim = new Statement( new PropertyNoValueSnak( 23 ) );
-		$claim->setGuid( 'second guid' );
+		$statement = new Statement( new PropertyNoValueSnak( 23 ) );
+		$statement->setGuid( 'second guid' );
 
-		$item->addClaim( $claim );
+		$item->addClaim( $statement );
 	}
 
 	public function testSerializationForDe() {
