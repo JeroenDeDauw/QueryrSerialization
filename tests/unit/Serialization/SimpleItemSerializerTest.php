@@ -78,7 +78,7 @@ class SimpleItemSerializerTest extends \PHPUnit_Framework_TestCase {
 		$item->addClaim( $claim );
 	}
 
-	public function testSerializationForDe() {
+	public function testSerializationWithValueForOneProperty() {
 		$serializer = new SimpleItemSerializer( 'de' );
 
 		$item = $this->newItem();
@@ -99,6 +99,39 @@ class SimpleItemSerializerTest extends \PHPUnit_Framework_TestCase {
 			'data' => [
 				'P42' => [
 					'value' => 'kittens',
+					'type' => 'string'
+				],
+			]
+		];
+
+		$this->assertEquals( $expected, $serialized );
+	}
+
+	public function testSerializationWithMultipleValuesForOneProperty() {
+		$serializer = new SimpleItemSerializer( 'en' );
+
+		$item = $this->newItem();
+
+		$claim = new Statement( new PropertyValueSnak( 42, new StringValue( 'cats' ) ) );
+		$claim->setGuid( 'third guid' );
+
+		$item->addClaim( $claim );
+
+		$serialized = $serializer->serialize( $item );
+
+		$expected = [
+			'id' => [
+				'wikidata' => 'Q1337',
+				'en.wikipedia' => 'En Page',
+			],
+
+			'label' => 'foo',
+			'aliases' => [ 'first en alias', 'second en alias' ],
+
+			'data' => [
+				'P42' => [
+					'value' => 'kittens',
+					'values' => [ 'kittens', 'cats' ],
 					'type' => 'string'
 				],
 			]
