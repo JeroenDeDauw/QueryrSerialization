@@ -87,12 +87,14 @@ class SimpleItemBuilderTest extends \PHPUnit_Framework_TestCase {
 		$expected->description = 'de description';
 		$expected->aliases = [ 'first de alias', 'second de alias' ];
 
-		$expected->statements = [
-			SimpleStatement::newInstance()
-				->withProperty( 'P42' )->withType( 'string' )->withValues( [ new StringValue( 'kittens' ) ] )
-		];
+		$expected->statements = [ $this->getSimpleStatement() ];
 
 		$this->assertEquals( $expected, $simpleItem );
+	}
+
+	private function getSimpleStatement() {
+		return SimpleStatement::newInstance()
+			->withProperty( 'P42' )->withType( 'string' )->withValues( [ new StringValue( 'kittens' ) ] );
 	}
 
 	public function testSerializationForEn() {
@@ -107,10 +109,7 @@ class SimpleItemBuilderTest extends \PHPUnit_Framework_TestCase {
 		$expected->label = 'foo';
 		$expected->aliases = [ 'first en alias', 'second en alias' ];
 
-		$expected->statements = [
-			SimpleStatement::newInstance()
-				->withProperty( 'P42' )->withType( 'string' )->withValues( [ new StringValue( 'kittens' ) ] )
-		];
+		$expected->statements = [ $this->getSimpleStatement() ];
 
 		$this->assertEquals( $expected, $simpleItem );
 	}
@@ -126,10 +125,7 @@ class SimpleItemBuilderTest extends \PHPUnit_Framework_TestCase {
 
 		$expected->label = 'baz';
 
-		$expected->statements = [
-			SimpleStatement::newInstance()
-				->withProperty( 'P42' )->withType( 'string' )->withValues( [ new StringValue( 'kittens' ) ] )
-		];
+		$expected->statements = [ $this->getSimpleStatement() ];
 
 		$this->assertEquals( $expected, $simpleItem );
 	}
