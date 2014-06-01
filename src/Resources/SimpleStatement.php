@@ -29,7 +29,7 @@ class SimpleStatement {
 		return new self();
 	}
 
-	public function withProperty( $propertyName ) {
+	public function withPropertyName( $propertyName ) {
 		$this->propertyName = $propertyName;
 		return $this;
 	}

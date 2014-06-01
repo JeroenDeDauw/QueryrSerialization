@@ -15,24 +15,18 @@ use Wikibase\DataModel\Entity\Item;
  */
 class SimpleItemSerializer implements Serializer {
 
-	private $languageCode;
-
 	/**
 	 * @var SimpleItem
 	 */
 	private $item;
 
-	public function __construct( $languageCode = 'en' ) {
-		$this->languageCode = $languageCode;
-	}
-
 	public function serialize( $object ) {
-		if ( !( $object instanceof Item ) ) {
-			throw new UnsupportedObjectException( $object, 'Can only serialize instances of Item' );
+		if ( !( $object instanceof SimpleItem ) ) {
+			throw new UnsupportedObjectException( $object, 'Can only serialize instances of SimpleItem' );
 		}
 
-		$builder = new SimpleItemBuilder( $this->languageCode );
-		$this->item = $builder->buildFromItem( $object );
+		$this->item = $object;
+
 		return $this->serializeItem();
 	}
 
@@ -68,7 +62,7 @@ class SimpleItemSerializer implements Serializer {
 
 	private function getPropertyValue( SimpleStatement $simpleStatement ) {
 		$propertyValue = [
-			'value' => $simpleStatement->values[0]->getArrayValue(),
+			'value' => $simpleStatement->values[0],
 			'type' => $simpleStatement->valueType
 		];
 
@@ -76,7 +70,7 @@ class SimpleItemSerializer implements Serializer {
 			$propertyValue['values'] = [];
 
 			foreach ( $simpleStatement->values as $value ) {
-				$propertyValue['values'][] = $value->getArrayValue();
+				$propertyValue['values'][] = $value;
 			}
 		}
 

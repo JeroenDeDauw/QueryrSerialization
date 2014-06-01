@@ -5,10 +5,12 @@ namespace Queryr\Resources\Builders;
 use DataValues\DataValue;
 use DataValues\StringValue;
 use Queryr\Resources\SimpleStatement;
+use Queryr\TermStore\LabelLookup;
 use Traversable;
 use Wikibase\DataModel\Claim\ClaimList;
 use Wikibase\DataModel\Claim\Claims;
 use Wikibase\DataModel\Claim\Statement;
+use Wikibase\DataModel\Entity\EntityId;
 use Wikibase\DataModel\Entity\EntityIdValue;
 use Wikibase\DataModel\Entity\Item;
 use Wikibase\DataModel\Entity\PropertyId;
@@ -23,9 +25,11 @@ use Wikibase\DataModel\Snak\PropertyValueSnak;
 class SimpleStatementsBuilder {
 
 	private $languageCode;
+	private $labelLookup;
 
-	public function __construct( $languageCode ) {
+	public function __construct( $languageCode, LabelLookup $labelLookup ) {
 		$this->languageCode = $languageCode;
+		$this->labelLookup = $labelLookup;
 	}
 
 	/**
@@ -44,13 +48,19 @@ class SimpleStatementsBuilder {
 			if ( !empty( $statementValues ) ) {
 				$simpleStatement->values = $statementValues;
 				$simpleStatement->valueType = $statementValues[0]->getType();
-				$simpleStatement->propertyName = $propertyId->getSerialization();
+				$simpleStatement->propertyName = $this->getEntityName( $propertyId );
 
 				$simpleStatements[] = $simpleStatement;
 			}
 		}
 
 		return $simpleStatements;
+	}
+
+	private function getEntityName( EntityId $id ) {
+		$label = $this->labelLookup->getLabelByIdAndLanguage( $id, $this->languageCode );
+
+		return $label === null ? $id->getSerialization() : $label;
 	}
 
 	/**
@@ -82,7 +92,7 @@ class SimpleStatementsBuilder {
 		$value = $snak->getDataValue();
 
 		if ( $value instanceof EntityIdValue ) {
-			return new StringValue( $value->getEntityId()->getSerialization() );
+			return new StringValue( $this->getEntityName( $value->getEntityId() ) );
 		}
 
 		return $value;

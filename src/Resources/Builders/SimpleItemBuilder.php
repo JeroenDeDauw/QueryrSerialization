@@ -15,6 +15,7 @@ class SimpleItemBuilder {
 	const MAIN_LANGUAGE = 'en';
 
 	private $languageCode;
+	private $statementsBuilder;
 
 	/**
 	 * @var Item
@@ -26,8 +27,9 @@ class SimpleItemBuilder {
 	 */
 	private $simpleItem;
 
-	public function __construct( $languageCode ) {
+	public function __construct( $languageCode, SimpleStatementsBuilder $statementsBuilder ) {
 		$this->languageCode = $languageCode;
+		$this->statementsBuilder = $statementsBuilder;
 	}
 
 	public function buildFromItem( Item $item ) {
@@ -78,8 +80,7 @@ class SimpleItemBuilder {
 	}
 
 	private function addStatements() {
-		$statementsBuilder = new SimpleStatementsBuilder( $this->languageCode );
-		$this->simpleItem->statements = $statementsBuilder->buildFromStatements( new ClaimList( $this->item->getClaims() ) );
+		$this->simpleItem->statements = $this->statementsBuilder->buildFromStatements( new ClaimList( $this->item->getClaims() ) );
 	}
 
 }

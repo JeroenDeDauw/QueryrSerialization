@@ -4,6 +4,7 @@ namespace Tests\Queryr\Resources\Builders;
 
 use DataValues\StringValue;
 use Queryr\Resources\Builders\SimpleItemBuilder;
+use Queryr\Resources\Builders\SimpleStatementsBuilder;
 use Queryr\Resources\SimpleItem;
 use Queryr\Resources\SimpleStatement;
 use Wikibase\DataModel\Claim\Statement;
@@ -12,9 +13,7 @@ use Wikibase\DataModel\SiteLink;
 use Wikibase\DataModel\SiteLinkList;
 use Wikibase\DataModel\Snak\PropertyNoValueSnak;
 use Wikibase\DataModel\Snak\PropertyValueSnak;
-use Wikibase\DataModel\Term\AliasGroup;
 use Wikibase\DataModel\Term\Fingerprint;
-use Wikibase\DataModel\Term\Term;
 
 /**
  * @covers Queryr\Resources\Builders\SimpleItemBuilder
@@ -74,7 +73,7 @@ class SimpleItemBuilderTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testSerializationForDe() {
-		$simpleItem = ( new SimpleItemBuilder( 'de' ) )->buildFromItem( $this->newItem() );
+		$simpleItem = $this->buildNewSimpleItemForLanguage( 'de' );
 
 		$expected = new SimpleItem();
 		$expected->ids = [
@@ -92,13 +91,28 @@ class SimpleItemBuilderTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals( $expected, $simpleItem );
 	}
 
+	private function buildNewSimpleItemForLanguage( $languageCode ) {
+		$labelLookup = $this->getMock( 'Queryr\TermStore\LabelLookup' );
+
+		$labelLookup->expects( $this->any() )
+			->method( 'getLabelByIdAndLanguage' )
+			->will( $this->returnValue( 'awesome label' ) );
+
+		$statementsBuilder = new SimpleStatementsBuilder( $languageCode, $labelLookup );
+		$itemBuilder = new SimpleItemBuilder( $languageCode, $statementsBuilder );
+
+		return $itemBuilder->buildFromItem( $this->newItem() );
+	}
+
 	private function getSimpleStatement() {
 		return SimpleStatement::newInstance()
-			->withProperty( 'P42' )->withType( 'string' )->withValues( [ new StringValue( 'kittens' ) ] );
+			->withPropertyName( 'awesome label' )
+			->withType( 'string' )
+			->withValues( [ new StringValue( 'kittens' ) ] );
 	}
 
 	public function testSerializationForEn() {
-		$simpleItem = ( new SimpleItemBuilder( 'en' ) )->buildFromItem( $this->newItem() );
+		$simpleItem = $this->buildNewSimpleItemForLanguage( 'en' );
 
 		$expected = new SimpleItem();
 		$expected->ids = [
@@ -115,7 +129,7 @@ class SimpleItemBuilderTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testSerializationForNl() {
-		$simpleItem = ( new SimpleItemBuilder( 'nl' ) )->buildFromItem( $this->newItem() );
+		$simpleItem = $this->buildNewSimpleItemForLanguage( 'nl' );
 
 		$expected = new SimpleItem();
 		$expected->ids = [
