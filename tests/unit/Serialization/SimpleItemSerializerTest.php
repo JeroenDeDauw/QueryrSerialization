@@ -2,6 +2,7 @@
 
 namespace Tests\Queryr\Serialization;
 
+use DataValues\NumberValue;
 use DataValues\StringValue;
 use Queryr\Resources\SimpleItem;
 use Queryr\Resources\SimpleStatement;
@@ -44,12 +45,12 @@ class SimpleItemSerializerTest extends \PHPUnit_Framework_TestCase {
 			SimpleStatement::newInstance()
 				->withPropertyName( 'fluffiness' )
 				->withType( 'number' )
-				->withValues( [ 9001 ] ),
+				->withValues( [ new NumberValue( 9001 ) ] ),
 
 			SimpleStatement::newInstance()
 				->withPropertyName( 'awesome' )
 				->withType( 'string' )
-				->withValues( [ 'Jeroen', 'Abraham' ] ),
+				->withValues( [ new StringValue( 'Jeroen' ), new StringValue( 'Abraham' ) ] ),
 		];
 
 		return $item;

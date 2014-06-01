@@ -21,6 +21,8 @@ class SimpleStatement {
 	public $valueType;
 
 	/**
+	 * Should have at least one element.
+	 *
 	 * @var DataValue[]
 	 */
 	public $values = [];

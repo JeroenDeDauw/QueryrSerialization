@@ -62,7 +62,7 @@ class SimpleItemSerializer implements Serializer {
 
 	private function getPropertyValue( SimpleStatement $simpleStatement ) {
 		$propertyValue = [
-			'value' => $simpleStatement->values[0],
+			'value' => $simpleStatement->values[0]->getArrayValue(),
 			'type' => $simpleStatement->valueType
 		];
 
@@ -70,7 +70,7 @@ class SimpleItemSerializer implements Serializer {
 			$propertyValue['values'] = [];
 
 			foreach ( $simpleStatement->values as $value ) {
-				$propertyValue['values'][] = $value;
+				$propertyValue['values'][] = $value->getArrayValue();
 			}
 		}
 
