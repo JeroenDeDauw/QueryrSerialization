@@ -2,15 +2,13 @@
 
 namespace Queryr\Resources\Builders;
 
-use Queryr\TermStore\LabelLookup;
-
 /**
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class BuilderFactory {
 
-	public function newSimpleItemBuilder( $languageCode, LabelLookup $labelLookup ) {
+	public function newSimpleItemBuilder( $languageCode, ResourceLabelLookup $labelLookup ) {
 		return new SimpleItemBuilder(
 			$languageCode,
 			new SimpleStatementsBuilder( $languageCode, $labelLookup )
