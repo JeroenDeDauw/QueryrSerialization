@@ -3,10 +3,8 @@
 	"require": {
 		"php": ">=5.5.0",
 
-		"wikibase/data-model": "dev-master",
-		"serialization/serialization": "~3.2",
-
-		"queryr/term-store": "dev-master"
+		"wikibase/data-model": "~1.0@dev",
+		"serialization/serialization": "~3.2"
 	},
 	"require-dev": {
 		"whatthejeff/nyancat-phpunit-resultprinter": "~1.2"
@@ -21,11 +19,5 @@
 		"branch-alias": {
 			"dev-master": "0.1.x-dev"
 		}
-	},
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "git@github.com:Queryr/TermStore.git"
-		}
-	]
+	}
 }

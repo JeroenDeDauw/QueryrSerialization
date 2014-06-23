@@ -2,12 +2,10 @@
 
 namespace Queryr\Serialization;
 
-use Queryr\Resources\Builders\SimpleItemBuilder;
 use Queryr\Resources\SimpleItem;
 use Queryr\Resources\SimpleStatement;
 use Serializers\Exceptions\UnsupportedObjectException;
 use Serializers\Serializer;
-use Wikibase\DataModel\Entity\Item;
 
 /**
  * @licence GNU GPL v2+

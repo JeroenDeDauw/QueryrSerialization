@@ -7,11 +7,6 @@ use DataValues\StringValue;
 use Queryr\Resources\SimpleItem;
 use Queryr\Resources\SimpleStatement;
 use Queryr\Serialization\SimpleItemSerializer;
-use Wikibase\DataModel\SiteLink;
-use Wikibase\DataModel\SiteLinkList;
-use Wikibase\DataModel\Snak\PropertyNoValueSnak;
-use Wikibase\DataModel\Snak\PropertyValueSnak;
-use Wikibase\DataModel\Term\Fingerprint;
 
 /**
  * @covers Queryr\Serialization\SimpleItemSerializer

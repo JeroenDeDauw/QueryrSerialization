@@ -9,7 +9,6 @@ use Queryr\Resources\SimpleItem;
 use Queryr\Resources\SimpleStatement;
 use Wikibase\DataModel\Claim\Statement;
 use Wikibase\DataModel\Entity\Item;
-use Wikibase\DataModel\SiteLink;
 use Wikibase\DataModel\SiteLinkList;
 use Wikibase\DataModel\Snak\PropertyNoValueSnak;
 use Wikibase\DataModel\Snak\PropertyValueSnak;
@@ -92,7 +91,7 @@ class SimpleItemBuilderTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	private function buildNewSimpleItemForLanguage( $languageCode ) {
-		$labelLookup = $this->getMock( 'Queryr\TermStore\LabelLookup' );
+		$labelLookup = $this->getMock( 'Queryr\Resources\Builders\ResourceLabelLookup' );
 
 		$labelLookup->expects( $this->any() )
 			->method( 'getLabelByIdAndLanguage' )

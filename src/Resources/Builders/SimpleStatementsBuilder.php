@@ -5,17 +5,12 @@ namespace Queryr\Resources\Builders;
 use DataValues\DataValue;
 use DataValues\StringValue;
 use Queryr\Resources\SimpleStatement;
-use Queryr\TermStore\LabelLookup;
-use Traversable;
 use Wikibase\DataModel\Claim\ClaimList;
 use Wikibase\DataModel\Claim\Claims;
 use Wikibase\DataModel\Claim\Statement;
 use Wikibase\DataModel\Entity\EntityId;
 use Wikibase\DataModel\Entity\EntityIdValue;
-use Wikibase\DataModel\Entity\Item;
 use Wikibase\DataModel\Entity\PropertyId;
-use Wikibase\DataModel\Snak\PropertyNoValueSnak;
-use Wikibase\DataModel\Snak\PropertySomeValueSnak;
 use Wikibase\DataModel\Snak\PropertyValueSnak;
 
 /**
@@ -27,7 +22,7 @@ class SimpleStatementsBuilder {
 	private $languageCode;
 	private $labelLookup;
 
-	public function __construct( $languageCode, LabelLookup $labelLookup ) {
+	public function __construct( $languageCode, ResourceLabelLookup $labelLookup ) {
 		$this->languageCode = $languageCode;
 		$this->labelLookup = $labelLookup;
 	}

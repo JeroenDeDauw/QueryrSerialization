@@ -32,7 +32,7 @@ class SimpleStatementsBuilderTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	private function assertBuildsFrom( array $statements, array $expected ) {
-		$labelLookup = $this->getMock( 'Queryr\TermStore\LabelLookup' );
+		$labelLookup = $this->getMock( 'Queryr\Resources\Builders\ResourceLabelLookup' );
 
 		$labelLookup->expects( $this->any() )
 			->method( 'getLabelByIdAndLanguage' )
@@ -57,7 +57,7 @@ class SimpleStatementsBuilderTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testLabelLookupFallsBackToId() {
-		$labelLookup = $this->getMock( 'Queryr\TermStore\LabelLookup' );
+		$labelLookup = $this->getMock( 'Queryr\Resources\Builders\ResourceLabelLookup' );
 
 		$labelLookup->expects( $this->any() )
 			->method( 'getLabelByIdAndLanguage' )
