@@ -54,8 +54,8 @@ class SimpleItemBuilderTest extends \PHPUnit_Framework_TestCase {
 	private function newSiteLinks() {
 		$links = new SiteLinkList();
 
-		$links->add( new SiteLink( 'enwiki', 'En Page' ) );
-		$links->add( new SiteLink( 'dewiki', 'De Page' ) );
+		$links->addNewSiteLink( 'enwiki', 'En Page' );
+		$links->addNewSiteLink( 'dewiki', 'De Page' );
 
 		return $links;
 	}
