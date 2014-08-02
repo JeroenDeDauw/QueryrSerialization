@@ -6,18 +6,18 @@ use DataValues\NumberValue;
 use DataValues\StringValue;
 use Queryr\Resources\SimpleItem;
 use Queryr\Resources\SimpleStatement;
-use Queryr\Serialization\CitySerializer;
+use Queryr\Serialization\StableItemSerializer;
 
 /**
- * @covers Queryr\Serialization\CitySerializer
+ * @covers Queryr\Serialization\StableItemSerializer
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class CitySerializerTest extends \PHPUnit_Framework_TestCase {
+class StableItemSerializerTest extends \PHPUnit_Framework_TestCase {
 
 	public function testGivenNonItem_exceptionIsThrown() {
-		$serializer = new CitySerializer();
+		$serializer = new StableItemSerializer();
 
 		$this->setExpectedException( 'Serializers\Exceptions\UnsupportedObjectException' );
 		$serializer->serialize( null );
@@ -52,7 +52,7 @@ class CitySerializerTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testSerializationWithValueForOneProperty() {
-		$serialized = ( new CitySerializer() )->serialize( $this->newSimpleItem() );
+		$serialized = ( new StableItemSerializer() )->serialize( $this->newSimpleItem() );
 
 		$expected = [
 			'id' => [

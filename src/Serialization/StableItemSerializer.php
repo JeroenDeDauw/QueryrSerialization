@@ -10,7 +10,7 @@ use Serializers\Serializer;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class CitySerializer implements Serializer {
+class StableItemSerializer implements Serializer {
 
 	/**
 	 * @var Serializer

@@ -6,7 +6,7 @@ Serializers for QueryR resources.
 
 #### Version 0.2 (2014-08-02)
 
-* Added `CitySerializer`
+* Added `StableItemSerializer`
 
 #### Version 0.1.1 (2014-06-23)
 
