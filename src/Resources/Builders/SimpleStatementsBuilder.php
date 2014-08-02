@@ -44,6 +44,7 @@ class SimpleStatementsBuilder {
 				$simpleStatement->values = $statementValues;
 				$simpleStatement->valueType = $statementValues[0]->getType();
 				$simpleStatement->propertyName = $this->getEntityName( $propertyId );
+				$simpleStatement->propertyId = $propertyId;
 
 				$simpleStatements[] = $simpleStatement;
 			}

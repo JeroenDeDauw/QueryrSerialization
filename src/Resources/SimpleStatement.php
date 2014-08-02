@@ -3,6 +3,7 @@
 namespace Queryr\Resources;
 
 use DataValues\DataValue;
+use Wikibase\DataModel\Entity\PropertyId;
 
 /**
  * @licence GNU GPL v2+
@@ -14,6 +15,11 @@ class SimpleStatement {
 	 * @var string
 	 */
 	public $propertyName;
+
+	/**
+	 * @var PropertyId
+	 */
+	public $propertyId;
 
 	/**
 	 * @var string
@@ -43,6 +49,11 @@ class SimpleStatement {
 
 	public function withValues( array $values ) {
 		$this->values = $values;
+		return $this;
+	}
+
+	public function withPropertyId( $propertyId ) {
+		$this->propertyId = $propertyId;
 		return $this;
 	}
 

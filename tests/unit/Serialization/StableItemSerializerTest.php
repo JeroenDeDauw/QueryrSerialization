@@ -52,7 +52,12 @@ class StableItemSerializerTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testSerializationWithValueForOneProperty() {
-		$serialized = ( new StableItemSerializer() )->serialize( $this->newSimpleItem() );
+		$serializer = new StableItemSerializer( [
+			'P23' => 'Population',
+			'P42' => ''
+		] );
+
+		$serialized = $serializer->serialize( $this->newSimpleItem() );
 
 		$expected = [
 			'id' => [

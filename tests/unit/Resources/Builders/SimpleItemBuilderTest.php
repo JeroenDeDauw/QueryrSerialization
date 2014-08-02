@@ -9,6 +9,7 @@ use Queryr\Resources\SimpleItem;
 use Queryr\Resources\SimpleStatement;
 use Wikibase\DataModel\Claim\Statement;
 use Wikibase\DataModel\Entity\Item;
+use Wikibase\DataModel\Entity\PropertyId;
 use Wikibase\DataModel\SiteLinkList;
 use Wikibase\DataModel\Snak\PropertyNoValueSnak;
 use Wikibase\DataModel\Snak\PropertyValueSnak;
@@ -106,6 +107,7 @@ class SimpleItemBuilderTest extends \PHPUnit_Framework_TestCase {
 	private function getSimpleStatement() {
 		return SimpleStatement::newInstance()
 			->withPropertyName( 'awesome label' )
+			->withPropertyId( new PropertyId( 'P42' ) )
 			->withType( 'string' )
 			->withValues( [ new StringValue( 'kittens' ) ] );
 	}

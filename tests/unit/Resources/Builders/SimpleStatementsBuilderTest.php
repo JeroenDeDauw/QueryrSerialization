@@ -9,6 +9,7 @@ use Wikibase\DataModel\Claim\ClaimList;
 use Wikibase\DataModel\Claim\Statement;
 use Wikibase\DataModel\Entity\EntityIdValue;
 use Wikibase\DataModel\Entity\ItemId;
+use Wikibase\DataModel\Entity\PropertyId;
 use Wikibase\DataModel\Snak\PropertyValueSnak;
 
 /**
@@ -25,6 +26,7 @@ class SimpleStatementsBuilderTest extends \PHPUnit_Framework_TestCase {
 
 		$expected = SimpleStatement::newInstance()
 			->withPropertyName( 'awesome label' )
+			->withPropertyId( new PropertyId( 'P42' ) )
 			->withType( 'string' )
 			->withValues( [ new StringValue( 'kittens' ) ] );
 
@@ -50,6 +52,7 @@ class SimpleStatementsBuilderTest extends \PHPUnit_Framework_TestCase {
 
 		$expected = SimpleStatement::newInstance()
 			->withPropertyName( 'awesome label' )
+			->withPropertyId( new PropertyId( 'P42' ) )
 			->withType( 'string' )
 			->withValues( [ new StringValue( 'awesome label' ) ] );
 
@@ -71,6 +74,7 @@ class SimpleStatementsBuilderTest extends \PHPUnit_Framework_TestCase {
 
 		$expected = SimpleStatement::newInstance()
 			->withPropertyName( 'P42' )
+			->withPropertyId( new PropertyId( 'P42' ) )
 			->withType( 'string' )
 			->withValues( [ new StringValue( 'Q1337' ) ] );
 
