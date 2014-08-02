@@ -10,21 +10,12 @@ use Serializers\Serializer;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class CitySerializer implements Serializer {
-
-	/**
-	 * @var Serializer
-	 */
-	private $foundationalSerializer;
+class SimpleItemFoundationSerializer implements Serializer {
 
 	/**
 	 * @var SimpleItem
 	 */
 	private $item;
-
-	public function __construct() {
-		$this->foundationalSerializer = new SimpleItemFoundationSerializer();
-	}
 
 	public function serialize( $object ) {
 		if ( !( $object instanceof SimpleItem ) ) {
@@ -37,21 +28,21 @@ class CitySerializer implements Serializer {
 	}
 
 	private function serializeItem() {
-		$serialization = $this->foundationalSerializer->serialize( $this->item );
+		$serialization = [ 'id' => $this->item->ids ];
 
-		$serialization['data'] = $this->getDataSection();
-
-		return $serialization;
-	}
-
-	private function getDataSection() {
-		$data = [];
-
-		foreach ( $this->item->statements as $simpleStatement ) {
-
+		if ( $this->item->label !== '' ) {
+			$serialization['label'] = $this->item->label;
 		}
 
-		return $data;
+		if ( $this->item->description !== '' ) {
+			$serialization['description'] = $this->item->description;
+		}
+
+		if ( !empty( $this->item->aliases ) ) {
+			$serialization['aliases'] = $this->item->aliases;
+		}
+
+		return $serialization;
 	}
 
 }

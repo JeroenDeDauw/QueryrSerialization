@@ -14,9 +14,18 @@ use Serializers\Serializer;
 class SimpleItemSerializer implements Serializer {
 
 	/**
+	 * @var Serializer
+	 */
+	private $foundationalSerializer;
+
+	/**
 	 * @var SimpleItem
 	 */
 	private $item;
+
+	public function __construct() {
+		$this->foundationalSerializer = new SimpleItemFoundationSerializer();
+	}
 
 	public function serialize( $object ) {
 		if ( !( $object instanceof SimpleItem ) ) {
@@ -29,19 +38,7 @@ class SimpleItemSerializer implements Serializer {
 	}
 
 	private function serializeItem() {
-		$serialization = [ 'id' => $this->item->ids ];
-
-		if ( $this->item->label !== '' ) {
-			$serialization['label'] = $this->item->label;
-		}
-
-		if ( $this->item->description !== '' ) {
-			$serialization['description'] = $this->item->description;
-		}
-
-		if ( !empty( $this->item->aliases ) ) {
-			$serialization['aliases'] = $this->item->aliases;
-		}
+		$serialization = $this->foundationalSerializer->serialize( $this->item );
 
 		$serialization['data'] = $this->getDataSection();
 
