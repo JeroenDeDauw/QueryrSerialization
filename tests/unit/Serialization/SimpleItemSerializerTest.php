@@ -6,6 +6,7 @@ use DataValues\NumberValue;
 use DataValues\StringValue;
 use Queryr\Resources\SimpleItem;
 use Queryr\Resources\SimpleStatement;
+use Queryr\Serialization\SerializerFactory;
 use Queryr\Serialization\SimpleItemSerializer;
 
 /**
@@ -17,7 +18,7 @@ use Queryr\Serialization\SimpleItemSerializer;
 class SimpleItemSerializerTest extends \PHPUnit_Framework_TestCase {
 
 	public function testGivenNonItem_exceptionIsThrown() {
-		$serializer = new SimpleItemSerializer();
+		$serializer = ( new SerializerFactory() )->newSimpleItemSerializer();
 
 		$this->setExpectedException( 'Serializers\Exceptions\UnsupportedObjectException' );
 		$serializer->serialize( null );
@@ -52,7 +53,8 @@ class SimpleItemSerializerTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testSerializationWithValueForOneProperty() {
-		$serialized = ( new SimpleItemSerializer() )->serialize( $this->newSimpleItem() );
+		$serializer = ( new SerializerFactory() )->newSimpleItemSerializer();
+		$serialized = $serializer->serialize( $this->newSimpleItem() );
 
 		$expected = [
 			'id' => [

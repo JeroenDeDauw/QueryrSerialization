@@ -7,6 +7,7 @@ use Serializers\Exceptions\UnsupportedObjectException;
 use Serializers\Serializer;
 
 /**
+ * @access private
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
@@ -30,12 +31,14 @@ class StableItemSerializer implements Serializer {
 	private $item;
 
 	/**
+	 * @param Serializer $foundationalSerializer
+	 * @param Serializer $statementSerializer
 	 * @param string[] $propertyMap Maps property id (string) to stable property name
 	 */
-	public function __construct( array $propertyMap ) {
+	public function __construct( Serializer $foundationalSerializer, Serializer $statementSerializer, array $propertyMap ) {
 		$this->propertyMap = $propertyMap;
-		$this->foundationalSerializer = new SimpleItemFoundationSerializer();
-		$this->statementSerializer = new SimpleStatementSerializer();
+		$this->foundationalSerializer = $foundationalSerializer;
+		$this->statementSerializer = $statementSerializer;
 	}
 
 	public function serialize( $object ) {

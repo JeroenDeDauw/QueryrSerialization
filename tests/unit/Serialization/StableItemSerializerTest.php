@@ -6,6 +6,7 @@ use DataValues\NumberValue;
 use DataValues\StringValue;
 use Queryr\Resources\SimpleItem;
 use Queryr\Resources\SimpleStatement;
+use Queryr\Serialization\SerializerFactory;
 use Queryr\Serialization\StableItemSerializer;
 
 /**
@@ -17,7 +18,7 @@ use Queryr\Serialization\StableItemSerializer;
 class StableItemSerializerTest extends \PHPUnit_Framework_TestCase {
 
 	public function testGivenNonItem_exceptionIsThrown() {
-		$serializer = new StableItemSerializer( array() );
+		$serializer = ( new SerializerFactory() )->newStableItemSerializer( [] );
 
 		$this->setExpectedException( 'Serializers\Exceptions\UnsupportedObjectException' );
 		$serializer->serialize( null );
@@ -60,7 +61,7 @@ class StableItemSerializerTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testSerialization() {
-		$serializer = new StableItemSerializer( [
+		$serializer = ( new SerializerFactory() )->newStableItemSerializer( [
 			'P42' => 'Certified by',
 			'P23' => 'Population',
 		] );

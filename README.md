@@ -4,6 +4,11 @@ Serializers for QueryR resources.
 
 ## Release notes
 
+#### Version 0.3 (2014-08-05)
+
+* All serializers are now package private
+* Added `SerializerFactory` which is package public
+
 #### Version 0.2 (2014-08-05)
 
 * Added `StableItemSerializer`

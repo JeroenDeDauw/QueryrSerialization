@@ -8,6 +8,7 @@ use Serializers\Exceptions\UnsupportedObjectException;
 use Serializers\Serializer;
 
 /**
+ * @access private
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
@@ -28,9 +29,9 @@ class SimpleItemSerializer implements Serializer {
 	 */
 	private $item;
 
-	public function __construct() {
-		$this->foundationalSerializer = new SimpleItemFoundationSerializer();
-		$this->statementSerializer = new SimpleStatementSerializer();
+	public function __construct( Serializer $foundationalSerializer, Serializer $statementSerializer ) {
+		$this->foundationalSerializer = $foundationalSerializer;
+		$this->statementSerializer = $statementSerializer;
 	}
 
 	public function serialize( $object ) {
