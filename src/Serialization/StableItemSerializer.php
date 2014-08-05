@@ -12,18 +12,30 @@ use Serializers\Serializer;
  */
 class StableItemSerializer implements Serializer {
 
+	private $propertyMap;
+
 	/**
 	 * @var Serializer
 	 */
 	private $foundationalSerializer;
 
 	/**
+	 * @var Serializer
+	 */
+	private $statementSerializer;
+
+	/**
 	 * @var SimpleItem
 	 */
 	private $item;
 
-	public function __construct() {
+	/**
+	 * @param string[] $propertyMap Maps property id (string) to stable property name
+	 */
+	public function __construct( array $propertyMap ) {
+		$this->propertyMap = $propertyMap;
 		$this->foundationalSerializer = new SimpleItemFoundationSerializer();
+		$this->statementSerializer = new SimpleStatementSerializer();
 	}
 
 	public function serialize( $object ) {
@@ -48,7 +60,11 @@ class StableItemSerializer implements Serializer {
 		$data = [];
 
 		foreach ( $this->item->statements as $simpleStatement ) {
+			$propertyId = $simpleStatement->propertyId->getSerialization();
 
+			if ( array_key_exists( $propertyId, $this->propertyMap ) ) {
+				$data[$this->propertyMap[$propertyId]] = $this->statementSerializer->serialize( $simpleStatement );
+			}
 		}
 
 		return $data;

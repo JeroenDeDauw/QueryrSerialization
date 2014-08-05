@@ -53,7 +53,7 @@ class SimpleStatement {
 	}
 
 	public function withPropertyId( $propertyId ) {
-		$this->propertyId = $propertyId;
+		$this->propertyId = is_string( $propertyId ) ? new PropertyId( $propertyId ) : $propertyId;
 		return $this;
 	}
 

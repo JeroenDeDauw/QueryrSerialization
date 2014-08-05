@@ -17,7 +17,7 @@ use Queryr\Serialization\StableItemSerializer;
 class StableItemSerializerTest extends \PHPUnit_Framework_TestCase {
 
 	public function testGivenNonItem_exceptionIsThrown() {
-		$serializer = new StableItemSerializer();
+		$serializer = new StableItemSerializer( array() );
 
 		$this->setExpectedException( 'Serializers\Exceptions\UnsupportedObjectException' );
 		$serializer->serialize( null );
@@ -38,23 +38,31 @@ class StableItemSerializerTest extends \PHPUnit_Framework_TestCase {
 
 		$item->statements = [
 			SimpleStatement::newInstance()
-				->withPropertyName( 'fluffiness' )
+				->withPropertyName( 'Population prop name' )
+				->withPropertyId( 'P23' )
 				->withType( 'number' )
 				->withValues( [ new NumberValue( 9001 ) ] ),
 
 			SimpleStatement::newInstance()
-				->withPropertyName( 'awesome' )
+				->withPropertyName( 'foo bar baz' )
+				->withPropertyId( 'P42' )
 				->withType( 'string' )
 				->withValues( [ new StringValue( 'Jeroen' ), new StringValue( 'Abraham' ) ] ),
+
+			SimpleStatement::newInstance()
+				->withPropertyName( 'Property that is no in the map' )
+				->withPropertyId( 'P1337' )
+				->withType( 'number' )
+				->withValues( [ new NumberValue( 1337 ) ] ),
 		];
 
 		return $item;
 	}
 
-	public function testSerializationWithValueForOneProperty() {
+	public function testSerialization() {
 		$serializer = new StableItemSerializer( [
+			'P42' => 'Certified by',
 			'P23' => 'Population',
-			'P42' => ''
 		] );
 
 		$serialized = $serializer->serialize( $this->newSimpleItem() );
@@ -71,7 +79,15 @@ class StableItemSerializerTest extends \PHPUnit_Framework_TestCase {
 			'aliases' => [ 'cats' ],
 
 			'data' => [
-
+				'Population' => [
+					'value' => 9001,
+					'type' => 'number'
+				],
+				'Certified by' => [
+					'value' => 'Jeroen',
+					'values' => [ 'Jeroen', 'Abraham' ],
+					'type' => 'string'
+				],
 			]
 		];
 

@@ -19,12 +19,18 @@ class SimpleItemSerializer implements Serializer {
 	private $foundationalSerializer;
 
 	/**
+	 * @var Serializer
+	 */
+	private $statementSerializer;
+
+	/**
 	 * @var SimpleItem
 	 */
 	private $item;
 
 	public function __construct() {
 		$this->foundationalSerializer = new SimpleItemFoundationSerializer();
+		$this->statementSerializer = new SimpleStatementSerializer();
 	}
 
 	public function serialize( $object ) {
@@ -49,27 +55,10 @@ class SimpleItemSerializer implements Serializer {
 		$data = [];
 
 		foreach ( $this->item->statements as $simpleStatement ) {
-			$data[$simpleStatement->propertyName] = $this->getPropertyValue( $simpleStatement );
+			$data[$simpleStatement->propertyName] = $this->statementSerializer->serialize( $simpleStatement );
 		}
 
 		return $data;
-	}
-
-	private function getPropertyValue( SimpleStatement $simpleStatement ) {
-		$propertyValue = [
-			'value' => $simpleStatement->values[0]->getArrayValue(),
-			'type' => $simpleStatement->valueType
-		];
-
-		if ( count( $simpleStatement->values ) > 1 ) {
-			$propertyValue['values'] = [];
-
-			foreach ( $simpleStatement->values as $value ) {
-				$propertyValue['values'][] = $value->getArrayValue();
-			}
-		}
-
-		return $propertyValue;
 	}
 
 }
