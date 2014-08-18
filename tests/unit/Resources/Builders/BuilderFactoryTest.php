@@ -12,7 +12,7 @@ use Queryr\Resources\Builders\BuilderFactory;
  */
 class BuilderFactoryTest extends \PHPUnit_Framework_TestCase {
 
-	public function testFoo() {
+	public function testNewSimpleItemBuilderReturnsCorrectType() {
 		$simpleItemBuilder = ( new BuilderFactory() )->newSimpleItemBuilder(
 			'en',
 			$this->getMock( 'Queryr\Resources\Builders\ResourceLabelLookup' )
