@@ -33,4 +33,11 @@ class SerializerFactory {
 		);
 	}
 
+	/**
+	 * @return Serializer
+	 */
+	public function newPropertyListSerializer() {
+		return new PropertyListSerializer();
+	}
+
 }

@@ -3,6 +3,7 @@
 namespace Queryr\Serialization;
 
 use Queryr\Resources\PropertyList;
+use Queryr\Resources\PropertyListElement;
 use Serializers\Exceptions\UnsupportedObjectException;
 use Serializers\Serializer;
 
@@ -22,7 +23,22 @@ class PropertyListSerializer implements Serializer {
 	}
 
 	private function serializeList( PropertyList $list ) {
-		return [];
+		$serialization = [];
+
+		foreach ( $list->getElements() as $element ) {
+			$serialization[] = $this->serializeElement( $element );
+		}
+
+		return $serialization;
+	}
+
+	private function serializeElement( PropertyListElement $element ) {
+		return [
+			'id' => $element->getPropertyId()->getSerialization(),
+			'type' => $element->getPropertyType(),
+			'url' => $element->getApiUrl(),
+			'wikidata_url' => $element->getWikidataUrl(),
+		];
 	}
 
 }

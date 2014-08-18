@@ -38,7 +38,7 @@ class PropertyListElement {
 	/**
 	 * @return string
 	 */
-	public function getPageUrl() {
+	public function getWikidataUrl() {
 		return $this->pageUrl;
 	}
 

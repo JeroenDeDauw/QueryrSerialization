@@ -47,7 +47,7 @@ class PropertyListTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals( new PropertyId( 'P1' ), $item->getPropertyId() );
 		$this->assertEquals( 'number', $item->getPropertyType() );
-		$this->assertEquals( 'https://www.wikidata.org/wiki/Property:P1', $item->getPageUrl() );
+		$this->assertEquals( 'https://www.wikidata.org/wiki/Property:P1', $item->getWikidataUrl() );
 		$this->assertEquals( 'http://api.queryr.com/properties/P1', $item->getApiUrl() );
 	}
 
