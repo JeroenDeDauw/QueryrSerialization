@@ -16,8 +16,17 @@ class SerializerFactory {
 	 */
 	public function newSimpleItemSerializer() {
 		return new SimpleItemSerializer(
-			new SimpleItemFoundationSerializer(),
+			new SimpleFoundationSerializer(),
 			new SimpleStatementSerializer()
+		);
+	}
+
+	/**
+	 * @return Serializer
+	 */
+	public function newSimplePropertySerializer() {
+		return new SimplePropertySerializer(
+			new SimpleFoundationSerializer()
 		);
 	}
 
@@ -27,7 +36,7 @@ class SerializerFactory {
 	 */
 	public function newStableItemSerializer( array $propertyMap ) {
 		return new StableItemSerializer(
-			new SimpleItemFoundationSerializer(),
+			new SimpleFoundationSerializer(),
 			new SimpleStatementSerializer(),
 			$propertyMap
 		);

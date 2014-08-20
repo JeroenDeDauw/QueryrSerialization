@@ -4,6 +4,12 @@ Serializers for QueryR resources.
 
 ## Release notes
 
+#### Version 0.5 (2014-08-20)
+
+* Added `SimpleProperty` resource
+* Added `SimplePropertyBuilder`
+* Added `SimplePropertySerializer`
+
 #### Version 0.4 (2014-08-18)
 
 * Added `PropertyList` resource
