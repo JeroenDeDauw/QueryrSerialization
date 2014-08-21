@@ -49,4 +49,11 @@ class SerializerFactory {
 		return new PropertyListSerializer();
 	}
 
+	/**
+	 * @return Serializer
+	 */
+	public function newItemListSerializer() {
+		return new ItemListSerializer();
+	}
+
 }

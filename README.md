@@ -4,6 +4,11 @@ Serializers for QueryR resources.
 
 ## Release notes
 
+#### Version 0.6 (2014-08-21)
+
+* Added `ItemList` resource
+* Added `SerializerFactory::newItemListSerializer`
+
 #### Version 0.5 (2014-08-20)
 
 * Added `SimpleProperty` resource

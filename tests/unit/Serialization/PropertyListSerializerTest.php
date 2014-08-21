@@ -2,14 +2,9 @@
 
 namespace Tests\Queryr\Serialization;
 
-use DataValues\NumberValue;
-use DataValues\StringValue;
 use Queryr\Resources\PropertyList;
 use Queryr\Resources\PropertyListElement;
-use Queryr\Resources\SimpleItem;
-use Queryr\Resources\SimpleStatement;
 use Queryr\Serialization\SerializerFactory;
-use Queryr\Serialization\SimpleItemSerializer;
 use Wikibase\DataModel\Entity\PropertyId;
 
 /**
