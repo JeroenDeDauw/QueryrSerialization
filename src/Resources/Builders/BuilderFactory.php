@@ -15,4 +15,8 @@ class BuilderFactory {
 		);
 	}
 
+	public function newSimplePropertyBuilder( $languageCode ) {
+		return new SimplePropertyBuilder( $languageCode );
+	}
+
 }

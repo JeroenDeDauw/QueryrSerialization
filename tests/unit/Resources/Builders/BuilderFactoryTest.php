@@ -21,4 +21,10 @@ class BuilderFactoryTest extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf( 'Queryr\Resources\Builders\SimpleItemBuilder', $simpleItemBuilder );
 	}
 
+	public function testNewSimplePropertyBuilderReturnsCorrectType() {
+		$simplePropertyBuilder = ( new BuilderFactory() )->newSimplePropertyBuilder( 'en' );
+
+		$this->assertInstanceOf( 'Queryr\Resources\Builders\SimplePropertyBuilder', $simplePropertyBuilder );
+	}
+
 }
