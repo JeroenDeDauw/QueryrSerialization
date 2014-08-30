@@ -56,4 +56,11 @@ class SerializerFactory {
 		return new ItemListSerializer();
 	}
 
+	/**
+	 * @return Serializer
+	 */
+	public function newItemTypeSerializer() {
+		return new ItemTypeSerializer();
+	}
+
 }
