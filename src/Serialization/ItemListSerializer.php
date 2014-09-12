@@ -33,12 +33,22 @@ class ItemListSerializer implements Serializer {
 	}
 
 	private function serializeElement( ItemListElement $element ) {
-		return [
-			'id' => $element->getItemId()->getSerialization(),
-			'updated_at' => $element->getLastUpdateTime(),
-			'url' => $element->getQueryrApiUrl(),
-			'wikidata_url' => $element->getWikidataUrl(),
-		];
+		$summary = [];
+		$summary['id'] = $element->getItemId()->getSerialization();
+
+		if ( $element->getLabel() !== null ) {
+			$summary['label'] = $element->getLabel();
+		}
+
+		$summary['updated_at'] = $element->getLastUpdateTime();
+		$summary['url'] = $element->getQueryrApiUrl();
+		$summary['wikidata_url'] = $element->getWikidataUrl();
+
+		if ( $element->getWikipediaPageUrl() !== null ) {
+			$summary['wikipedia_url'] = $element->getWikipediaPageUrl();
+		}
+
+		return $summary;
 	}
 
 }

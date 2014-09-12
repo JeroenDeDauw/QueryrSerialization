@@ -35,6 +35,8 @@ class ItemListSerializerTest extends \PHPUnit_Framework_TestCase {
 				->setLastUpdate( '2014-05-30T16:31:27Z' )
 				->setWikidataPageUrl( 'http://www.wikidata.org/entity/Q2' )
 				->setQueryrApiUrl( 'http://api.queryr.com/items/Q2' )
+				->setLabel( 'kittens' )
+				->setWikipediaPageUrl( 'foo' )
 		] );
 
 		$expected = [
@@ -46,9 +48,11 @@ class ItemListSerializerTest extends \PHPUnit_Framework_TestCase {
 			],
 			[
 				'id' => 'Q2',
+				'label' => 'kittens',
 				'updated_at' => '2014-05-30T16:31:27Z',
 				'url' => 'http://api.queryr.com/items/Q2',
 				'wikidata_url' => 'http://www.wikidata.org/entity/Q2',
+				'wikipedia_url' => 'foo',
 			]
 		];
 
