@@ -24,30 +24,29 @@ class ItemListSerializerTest extends \PHPUnit_Framework_TestCase {
 
 	public function testSerialize() {
 		$input = new ItemList( [
-			new ItemListElement(
-				new ItemId( 'Q1' ),
-				'2014-04-27T09:00:29Z',
-				'http://www.wikidata.org/entity/Q1',
-				'http://api.queryr.com/items/Q1'
-			),
-			new ItemListElement(
-				new ItemId( 'Q2' ),
-				'2011-05-08T14:34:39Z',
-				'http://www.wikidata.org/entity/Q2',
-				'http://api.queryr.com/items/Q2'
-			)
+			( new ItemListElement() )
+				->setItemId( new ItemId( 'Q1' ) )
+				->setLastUpdate( '2014-08-16T19:52:04Z' )
+				->setWikidataPageUrl( 'http://www.wikidata.org/entity/Q1' )
+				->setQueryrApiUrl( 'http://api.queryr.com/items/Q1' ),
+
+			( new ItemListElement() )
+				->setItemId( new ItemId( 'Q2' ) )
+				->setLastUpdate( '2014-05-30T16:31:27Z' )
+				->setWikidataPageUrl( 'http://www.wikidata.org/entity/Q2' )
+				->setQueryrApiUrl( 'http://api.queryr.com/items/Q2' )
 		] );
 
 		$expected = [
 			[
 				'id' => 'Q1',
-				'updated_at' => '2014-04-27T09:00:29Z',
+				'updated_at' => '2014-08-16T19:52:04Z',
 				'url' => 'http://api.queryr.com/items/Q1',
 				'wikidata_url' => 'http://www.wikidata.org/entity/Q1',
 			],
 			[
 				'id' => 'Q2',
-				'updated_at' => '2011-05-08T14:34:39Z',
+				'updated_at' => '2014-05-30T16:31:27Z',
 				'url' => 'http://api.queryr.com/items/Q2',
 				'wikidata_url' => 'http://www.wikidata.org/entity/Q2',
 			]
@@ -55,7 +54,7 @@ class ItemListSerializerTest extends \PHPUnit_Framework_TestCase {
 
 		$output = ( new SerializerFactory() )->newItemListSerializer()->serialize( $input );
 
-		$this->assertSame( $expected, $output );
+		$this->assertEquals( $expected, $output );
 	}
 
 }

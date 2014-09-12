@@ -4,6 +4,11 @@ Serializers for QueryR resources.
 
 ## Release notes
 
+#### Version 0.8 (2014-09-12)
+
+* Replaced the constructor of `ItemListElement` with setters
+* Added "wikipedia page url" and "label" to `ItemListElement`, both optional strings
+
 #### Version 0.7 (2014-08-30)
 
 * Added `ItemType` resource

@@ -36,7 +36,7 @@ class ItemListSerializer implements Serializer {
 		return [
 			'id' => $element->getItemId()->getSerialization(),
 			'updated_at' => $element->getLastUpdateTime(),
-			'url' => $element->getApiUrl(),
+			'url' => $element->getQueryrApiUrl(),
 			'wikidata_url' => $element->getWikidataUrl(),
 		];
 	}
