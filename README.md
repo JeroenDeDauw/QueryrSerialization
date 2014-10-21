@@ -4,6 +4,10 @@ Serializers for QueryR resources.
 
 ## Release notes
 
+#### Version 0.8.1 (2014-10-21)
+
+* Made installable together with Wikibase DataModel 2.x
+
 #### Version 0.8 (2014-09-12)
 
 * Replaced the constructor of `ItemListElement` with setters
