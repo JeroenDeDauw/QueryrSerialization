@@ -5,8 +5,9 @@ namespace Tests\Queryr\Resources\Builders;
 use DataValues\StringValue;
 use Queryr\Resources\Builders\SimpleStatementsBuilder;
 use Queryr\Resources\SimpleStatement;
+use Wikibase\DataModel\Claim\Claim;
 use Wikibase\DataModel\Claim\ClaimList;
-use Wikibase\DataModel\Claim\Statement;
+use Wikibase\DataModel\Statement\Statement;
 use Wikibase\DataModel\Entity\EntityIdValue;
 use Wikibase\DataModel\Entity\ItemId;
 use Wikibase\DataModel\Entity\PropertyId;
@@ -21,7 +22,7 @@ use Wikibase\DataModel\Snak\PropertyValueSnak;
 class SimpleStatementsBuilderTest extends \PHPUnit_Framework_TestCase {
 
 	public function testBuildFromSingleStatementWithPropertyValueSnak() {
-		$statement = new Statement( new PropertyValueSnak( 42, new StringValue( 'kittens' ) ) );
+		$statement = new Statement( new Claim( new PropertyValueSnak( 42, new StringValue( 'kittens' ) ) ) );
 		$statement->setGuid( 'first guid' );
 
 		$expected = SimpleStatement::newInstance()
@@ -47,7 +48,7 @@ class SimpleStatementsBuilderTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testEntityIdValueGetsSimplified() {
-		$statement = new Statement( new PropertyValueSnak( 42, new EntityIdValue( new ItemId( 'Q1337' ) ) ) );
+		$statement = new Statement( new Claim( new PropertyValueSnak( 42, new EntityIdValue( new ItemId( 'Q1337' ) ) ) ) );
 		$statement->setGuid( 'first guid' );
 
 		$expected = SimpleStatement::newInstance()
@@ -66,7 +67,7 @@ class SimpleStatementsBuilderTest extends \PHPUnit_Framework_TestCase {
 			->method( 'getLabelByIdAndLanguage' )
 			->will( $this->returnValue( null ) );
 
-		$statement = new Statement( new PropertyValueSnak( 42, new EntityIdValue( new ItemId( 'Q1337' ) ) ) );
+		$statement = new Statement( new Claim( new PropertyValueSnak( 42, new EntityIdValue( new ItemId( 'Q1337' ) ) ) ) );
 		$statement->setGuid( 'first guid' );
 
 		$builder = new SimpleStatementsBuilder( 'en', $labelLookup );
