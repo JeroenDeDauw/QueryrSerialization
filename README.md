@@ -4,6 +4,11 @@ Serializers for QueryR resources.
 
 ## Release notes
 
+#### Version 0.8.2 (2014-12-14)
+
+* Wikipedia IDs changed format from `en.wikipedia` to `en_wikipedia`
+* Wikibase DataModel 1.x is no longer supported
+
 #### Version 0.8.1 (2014-10-21)
 
 * Made installable together with Wikibase DataModel 2.x

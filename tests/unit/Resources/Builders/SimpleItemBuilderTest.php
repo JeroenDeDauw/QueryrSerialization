@@ -65,12 +65,12 @@ class SimpleItemBuilderTest extends \PHPUnit_Framework_TestCase {
 		$statement = new Statement( new Claim( new PropertyValueSnak( 42, new StringValue( 'kittens' ) ) ) );
 		$statement->setGuid( 'first guid' );
 
-		$item->addClaim( $statement );
+		$item->getStatements()->addStatement( $statement );
 
 		$statement = new Statement( new Claim( new PropertyNoValueSnak( 23 ) ) );
 		$statement->setGuid( 'second guid' );
 
-		$item->addClaim( $statement );
+		$item->getStatements()->addStatement( $statement );
 	}
 
 	public function testSerializationForDe() {
@@ -79,8 +79,8 @@ class SimpleItemBuilderTest extends \PHPUnit_Framework_TestCase {
 		$expected = new SimpleItem();
 		$expected->ids = [
 			'wikidata' => 'Q1337',
-			'en.wikipedia' => 'En Page',
-			'de.wikipedia' => 'De Page',
+			'en_wikipedia' => 'En Page',
+			'de_wikipedia' => 'De Page',
 		];
 
 		$expected->label = 'bar';
@@ -119,7 +119,7 @@ class SimpleItemBuilderTest extends \PHPUnit_Framework_TestCase {
 		$expected = new SimpleItem();
 		$expected->ids = [
 			'wikidata' => 'Q1337',
-			'en.wikipedia' => 'En Page',
+			'en_wikipedia' => 'En Page',
 		];
 
 		$expected->label = 'foo';
@@ -136,7 +136,7 @@ class SimpleItemBuilderTest extends \PHPUnit_Framework_TestCase {
 		$expected = new SimpleItem();
 		$expected->ids = [
 			'wikidata' => 'Q1337',
-			'en.wikipedia' => 'En Page',
+			'en_wikipedia' => 'En Page',
 		];
 
 		$expected->label = 'baz';

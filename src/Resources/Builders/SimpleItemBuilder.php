@@ -57,7 +57,7 @@ class SimpleItemBuilder {
 		$links = $this->item->getSiteLinkList();
 
 		if ( $links->hasLinkWithSiteId( $languageCode . 'wiki' ) ) {
-			$this->simpleItem->ids[$languageCode . '.wikipedia'] = $links->getBySiteId( $languageCode . 'wiki' )->getPageName();
+			$this->simpleItem->ids[$languageCode . '_wikipedia'] = $links->getBySiteId( $languageCode . 'wiki' )->getPageName();
 		}
 	}
 
