@@ -49,7 +49,9 @@ class ItemType {
 	 * @throws RuntimeException
 	 */
 	public function getApiUrl() {
-		if ( $this->apiUrl === null ) throw new RuntimeException( 'Field not set' );
+		if ( $this->apiUrl === null ) {
+			throw new RuntimeException( 'Field not set' );
+		}
 		return $this->apiUrl;
 	}
 
@@ -58,7 +60,9 @@ class ItemType {
 	 * @throws RuntimeException
 	 */
 	public function getItemId() {
-		if ( $this->itemId === null ) throw new RuntimeException( 'Field not set' );
+		if ( $this->itemId === null ) {
+			throw new RuntimeException( 'Field not set' );
+		}
 		return $this->itemId;
 	}
 
@@ -67,7 +71,9 @@ class ItemType {
 	 * @throws RuntimeException
 	 */
 	public function getLabel() {
-		if ( $this->label === null ) throw new RuntimeException( 'Field not set' );
+		if ( $this->label === null ) {
+			throw new RuntimeException( 'Field not set' );
+		}
 		return $this->label;
 	}
 
@@ -76,7 +82,9 @@ class ItemType {
 	 * @throws RuntimeException
 	 */
 	public function getWikidataUrl() {
-		if ( $this->wikidataUrl === null ) throw new RuntimeException( 'Field not set' );
+		if ( $this->wikidataUrl === null ) {
+			throw new RuntimeException( 'Field not set' );
+		}
 		return $this->wikidataUrl;
 	}
 

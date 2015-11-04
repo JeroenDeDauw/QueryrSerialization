@@ -2,6 +2,24 @@
 
 Serializers for QueryR resources.
 
+## System dependencies
+
+* PHP 5.5 or later (PHP 7 and HHVM are supported)
+
+## Running the tests
+
+For tests only
+
+    composer test
+
+For style checks only
+
+	composer cs
+
+For a full CI run
+
+	composer ci
+
 ## Release notes
 
 ### Version 1.0.0 (2015-11-04)

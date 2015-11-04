@@ -103,7 +103,9 @@ class ItemListElement {
 	 * @throws RuntimeException
 	 */
 	public function getItemId() {
-		if ( $this->itemId === null ) throw new RuntimeException( 'Field not set' );
+		if ( $this->itemId === null ) {
+			throw new RuntimeException( 'Field not set' );
+		}
 		return $this->itemId;
 	}
 
@@ -112,7 +114,9 @@ class ItemListElement {
 	 * @throws RuntimeException
 	 */
 	public function getLastUpdateTime() {
-		if ( $this->lastUpdate === null ) throw new RuntimeException( 'Field not set' );
+		if ( $this->lastUpdate === null ) {
+			throw new RuntimeException( 'Field not set' );
+		}
 		return $this->lastUpdate;
 	}
 
@@ -128,7 +132,9 @@ class ItemListElement {
 	 * @throws RuntimeException
 	 */
 	public function getQueryrApiUrl() {
-		if ( $this->queryrApiUrl === null ) throw new RuntimeException( 'Field not set' );
+		if ( $this->queryrApiUrl === null ) {
+			throw new RuntimeException( 'Field not set' );
+		}
 		return $this->queryrApiUrl;
 	}
 
@@ -137,7 +143,9 @@ class ItemListElement {
 	 * @throws RuntimeException
 	 */
 	public function getWikidataUrl() {
-		if ( $this->wikidataPageUrl === null ) throw new RuntimeException( 'Field not set' );
+		if ( $this->wikidataPageUrl === null ) {
+			throw new RuntimeException( 'Field not set' );
+		}
 		return $this->wikidataPageUrl;
 	}
 
