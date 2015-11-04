@@ -8,12 +8,12 @@ use Queryr\Resources\Builders\SimpleStatementsBuilder;
 use Queryr\Resources\SimpleItem;
 use Queryr\Resources\SimpleStatement;
 use Wikibase\DataModel\Claim\Claim;
-use Wikibase\DataModel\Statement\Statement;
 use Wikibase\DataModel\Entity\Item;
 use Wikibase\DataModel\Entity\PropertyId;
 use Wikibase\DataModel\SiteLinkList;
 use Wikibase\DataModel\Snak\PropertyNoValueSnak;
 use Wikibase\DataModel\Snak\PropertyValueSnak;
+use Wikibase\DataModel\Statement\Statement;
 use Wikibase\DataModel\Term\Fingerprint;
 
 /**

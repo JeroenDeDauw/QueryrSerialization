@@ -7,11 +7,11 @@ use DataValues\StringValue;
 use Queryr\Resources\SimpleStatement;
 use Wikibase\DataModel\Claim\ClaimList;
 use Wikibase\DataModel\Claim\Claims;
-use Wikibase\DataModel\Statement\Statement;
 use Wikibase\DataModel\Entity\EntityId;
 use Wikibase\DataModel\Entity\EntityIdValue;
 use Wikibase\DataModel\Entity\PropertyId;
 use Wikibase\DataModel\Snak\PropertyValueSnak;
+use Wikibase\DataModel\Statement\Statement;
 
 /**
  * @licence GNU GPL v2+

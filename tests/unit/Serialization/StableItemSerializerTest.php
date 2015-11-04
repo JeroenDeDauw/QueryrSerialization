@@ -7,7 +7,6 @@ use DataValues\StringValue;
 use Queryr\Resources\SimpleItem;
 use Queryr\Resources\SimpleStatement;
 use Queryr\Serialization\SerializerFactory;
-use Queryr\Serialization\StableItemSerializer;
 
 /**
  * @covers Queryr\Serialization\StableItemSerializer

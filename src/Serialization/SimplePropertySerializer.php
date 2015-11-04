@@ -2,9 +2,7 @@
 
 namespace Queryr\Serialization;
 
-use Queryr\Resources\SimpleItem;
 use Queryr\Resources\SimpleProperty;
-use Queryr\Resources\SimpleStatement;
 use Serializers\Exceptions\UnsupportedObjectException;
 use Serializers\Serializer;
 
