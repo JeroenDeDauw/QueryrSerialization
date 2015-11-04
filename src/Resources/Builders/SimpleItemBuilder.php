@@ -3,7 +3,6 @@
 namespace Queryr\Resources\Builders;
 
 use Queryr\Resources\SimpleItem;
-use Wikibase\DataModel\Claim\ClaimList;
 use Wikibase\DataModel\Entity\Item;
 
 /**
@@ -80,7 +79,7 @@ class SimpleItemBuilder {
 	}
 
 	private function addStatements() {
-		$this->simpleItem->statements = $this->statementsBuilder->buildFromStatements( new ClaimList( $this->item->getClaims() ) );
+		$this->simpleItem->statements = $this->statementsBuilder->buildFromStatements( $this->item->getStatements() );
 	}
 
 }

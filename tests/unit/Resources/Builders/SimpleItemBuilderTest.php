@@ -7,7 +7,6 @@ use Queryr\Resources\Builders\SimpleItemBuilder;
 use Queryr\Resources\Builders\SimpleStatementsBuilder;
 use Queryr\Resources\SimpleItem;
 use Queryr\Resources\SimpleStatement;
-use Wikibase\DataModel\Claim\Claim;
 use Wikibase\DataModel\Entity\Item;
 use Wikibase\DataModel\Entity\PropertyId;
 use Wikibase\DataModel\SiteLinkList;
@@ -62,12 +61,12 @@ class SimpleItemBuilderTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	private function addStatements( Item $item ) {
-		$statement = new Statement( new Claim( new PropertyValueSnak( 42, new StringValue( 'kittens' ) ) ) );
+		$statement = new Statement( new PropertyValueSnak( 42, new StringValue( 'kittens' ) ) );
 		$statement->setGuid( 'first guid' );
 
 		$item->getStatements()->addStatement( $statement );
 
-		$statement = new Statement( new Claim( new PropertyNoValueSnak( 23 ) ) );
+		$statement = new Statement( new PropertyNoValueSnak( 23 ) );
 		$statement->setGuid( 'second guid' );
 
 		$item->getStatements()->addStatement( $statement );

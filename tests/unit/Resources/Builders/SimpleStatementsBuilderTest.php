@@ -5,13 +5,12 @@ namespace Tests\Queryr\Resources\Builders;
 use DataValues\StringValue;
 use Queryr\Resources\Builders\SimpleStatementsBuilder;
 use Queryr\Resources\SimpleStatement;
-use Wikibase\DataModel\Claim\Claim;
-use Wikibase\DataModel\Claim\ClaimList;
 use Wikibase\DataModel\Entity\EntityIdValue;
 use Wikibase\DataModel\Entity\ItemId;
 use Wikibase\DataModel\Entity\PropertyId;
 use Wikibase\DataModel\Snak\PropertyValueSnak;
 use Wikibase\DataModel\Statement\Statement;
+use Wikibase\DataModel\Statement\StatementList;
 
 /**
  * @covers Queryr\Resources\Builders\SimpleStatementsBuilder
@@ -22,7 +21,7 @@ use Wikibase\DataModel\Statement\Statement;
 class SimpleStatementsBuilderTest extends \PHPUnit_Framework_TestCase {
 
 	public function testBuildFromSingleStatementWithPropertyValueSnak() {
-		$statement = new Statement( new Claim( new PropertyValueSnak( 42, new StringValue( 'kittens' ) ) ) );
+		$statement = new Statement( new PropertyValueSnak( 42, new StringValue( 'kittens' ) ) );
 		$statement->setGuid( 'first guid' );
 
 		$expected = SimpleStatement::newInstance()
@@ -42,13 +41,13 @@ class SimpleStatementsBuilderTest extends \PHPUnit_Framework_TestCase {
 			->will( $this->returnValue( 'awesome label' ) );
 
 		$builder = new SimpleStatementsBuilder( 'en', $labelLookup );
-		$simpleStatements = $builder->buildFromStatements( new ClaimList( $statements ) );
+		$simpleStatements = $builder->buildFromStatements( new StatementList( $statements ) );
 
 		$this->assertEquals( $expected, $simpleStatements );
 	}
 
 	public function testEntityIdValueGetsSimplified() {
-		$statement = new Statement( new Claim( new PropertyValueSnak( 42, new EntityIdValue( new ItemId( 'Q1337' ) ) ) ) );
+		$statement = new Statement( new PropertyValueSnak( 42, new EntityIdValue( new ItemId( 'Q1337' ) ) ) );
 		$statement->setGuid( 'first guid' );
 
 		$expected = SimpleStatement::newInstance()
@@ -67,11 +66,11 @@ class SimpleStatementsBuilderTest extends \PHPUnit_Framework_TestCase {
 			->method( 'getLabelByIdAndLanguage' )
 			->will( $this->returnValue( null ) );
 
-		$statement = new Statement( new Claim( new PropertyValueSnak( 42, new EntityIdValue( new ItemId( 'Q1337' ) ) ) ) );
+		$statement = new Statement( new PropertyValueSnak( 42, new EntityIdValue( new ItemId( 'Q1337' ) ) ) );
 		$statement->setGuid( 'first guid' );
 
 		$builder = new SimpleStatementsBuilder( 'en', $labelLookup );
-		$simpleStatements = $builder->buildFromStatements( new ClaimList( [ $statement ] ) );
+		$simpleStatements = $builder->buildFromStatements( new StatementList( [ $statement ] ) );
 
 		$expected = SimpleStatement::newInstance()
 			->withPropertyName( 'P42' )

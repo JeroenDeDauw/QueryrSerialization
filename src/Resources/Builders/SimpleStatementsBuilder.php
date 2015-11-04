@@ -5,13 +5,12 @@ namespace Queryr\Resources\Builders;
 use DataValues\DataValue;
 use DataValues\StringValue;
 use Queryr\Resources\SimpleStatement;
-use Wikibase\DataModel\Claim\ClaimList;
-use Wikibase\DataModel\Claim\Claims;
 use Wikibase\DataModel\Entity\EntityId;
 use Wikibase\DataModel\Entity\EntityIdValue;
 use Wikibase\DataModel\Entity\PropertyId;
 use Wikibase\DataModel\Snak\PropertyValueSnak;
 use Wikibase\DataModel\Statement\Statement;
+use Wikibase\DataModel\Statement\StatementList;
 
 /**
  * @licence GNU GPL v2+
@@ -28,11 +27,11 @@ class SimpleStatementsBuilder {
 	}
 
 	/**
-	 * @param ClaimList $statements
+	 * @param StatementList $statements
 	 *
 	 * @return array
 	 */
-	public function buildFromStatements( ClaimList $statements ) {
+	public function buildFromStatements( StatementList $statements ) {
 		$simpleStatements = [];
 
 		foreach ( $statements->getPropertyIds() as $propertyId ) {
@@ -60,20 +59,18 @@ class SimpleStatementsBuilder {
 	}
 
 	/**
-	 * @param ClaimList $statements
+	 * @param StatementList $statements
 	 * @param PropertyId $propertyId
 	 *
 	 * @return DataValue[]
 	 */
-	private function getStatementValuesWithPropertyId( ClaimList $statements, PropertyId $propertyId ) {
-		$statementIndex = new Claims( $statements->toArray() );
-
+	private function getStatementValuesWithPropertyId( StatementList $statements, PropertyId $propertyId ) {
 		$statementValues = [];
 
 		/**
 		 * @var Statement $statement
 		 */
-		foreach ( $statementIndex->getClaimsForProperty( $propertyId )->getBestClaims() as $statement ) {
+		foreach ( $statements->getByPropertyId( $propertyId )->getBestStatements() as $statement ) {
 			$snak = $statement->getMainSnak();
 
 			if ( $snak instanceof PropertyValueSnak ) {
