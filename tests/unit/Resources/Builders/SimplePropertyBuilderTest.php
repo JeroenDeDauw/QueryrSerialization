@@ -26,7 +26,7 @@ class SimplePropertyBuilderTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	private function newFingerprint() {
-		$fingerprint = Fingerprint::newEmpty();
+		$fingerprint = new Fingerprint();
 
 		$fingerprint->setLabel( 'en', 'foo' );
 		$fingerprint->setLabel( 'de', 'bar' );

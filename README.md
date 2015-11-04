@@ -6,7 +6,7 @@ Serializers for QueryR resources.
 
 ### Version 1.0.0 (2015-11-04)
 
-
+* Changed minimum Wikibase DataModel version to 2.5
 
 ### Version 0.8.2 (2014-12-14)
 
