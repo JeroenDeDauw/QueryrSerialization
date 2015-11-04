@@ -1,8 +1,8 @@
 # QueryR Serialization
 
-[![Build Status](https://secure.travis-ci.org/JeroenDeDauw/QueryrSerialization .png?branch=master)](http://travis-ci.org/JeroenDeDauw/QueryrSerialization )
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/JeroenDeDauw/QueryrSerialization /badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/JeroenDeDauw/QueryrSerialization /?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/JeroenDeDauw/QueryrSerialization /badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/JeroenDeDauw/QueryrSerialization /?branch=master)
+[![Build Status](https://secure.travis-ci.org/JeroenDeDauw/QueryrSerialization.png?branch=master)](http://travis-ci.org/JeroenDeDauw/QueryrSerialization)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/JeroenDeDauw/QueryrSerialization/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/JeroenDeDauw/QueryrSerialization/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/JeroenDeDauw/QueryrSerialization/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/JeroenDeDauw/QueryrSerialization/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/queryr/serialization/version.png)](https://packagist.org/packages/queryr/serialization)
 [![Download count](https://poser.pugx.org/queryr/serialization/d/total.png)](https://packagist.org/packages/queryr/serialization)
 
