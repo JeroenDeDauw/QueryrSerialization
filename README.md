@@ -1,3 +1,5 @@
+This library, as a standalone, has been **abandoned** after it got merged into https://github.com/JeroenDeDauw/QueryrAPI
+
 # QueryR Serialization
 
 [![Build Status](https://secure.travis-ci.org/JeroenDeDauw/QueryrSerialization.png?branch=master)](http://travis-ci.org/JeroenDeDauw/QueryrSerialization)
